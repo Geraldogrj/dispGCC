@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block 'title' %}Home{% endblock %}
+
+{% block 'content' %}
+
+<h3>Mobilidade</h3>
+<table class="table table-sm">
+    <thead>
+      <tr class="bg-warning">
+        <th scope="col">Nome</th>
+        <th scope="col">Peso (Kg)</th>
+        <th scope="col">Vol (m3)</th>
+        <th scope="col">Alt</th>
+        <th scope="col">Larg</th>
+        <th scope="col">Compr</th>
+        <th scope="col">Qtd total</th>
+        <th scope="col">Qtd pane</th>
+        <th scope="col">Qtd aplicada</th>
+        <th scope="col">Qtd disponível</th>
+        <th scope="col">Observações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Estação DLRS</th>
+        <td>75</td>
+        <td>1</td>
+        <td>0.53</td>
+        <td>0.27</td>
+        <td>0.97</td>
+        <td>2</td>
+        <td>1</td>
+        <td>1</td>
+        <td>0</td>
+        <td>Emprestado para o 2/1 GCC</td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td>Jacob</td>
+        <td>Thornton</td>
+        <td>@fat</td>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+      </tr>
+      <tr>
+        <th scope="row">3</th>
+        <td colspan="2">Larry the Bird</td>
+        <td>@twitter</td>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>Mark</td>
+        <td>Otto</td>
+        <td>@mdo</td>
+        <td>@mdo</td>
+      </tr>
+    </tbody>
+  </table>
+
+{% endblock %}
