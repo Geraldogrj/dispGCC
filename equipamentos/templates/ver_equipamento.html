@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block 'content' %}
+
+<div class="container">
+    <form action="#" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-md-6">
+                <input class="form-control" type="text" placeholder="Nome" value="">
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" placeholder="Peso" value="">
+            </div>
+            <div class="col-md-3">
+                <input class="form-control" type="text" placeholder="Volume" value="">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-2">
+                <input class="form-control" type="text" placeholder="Largura" value="">
+            </div>
+            <div class="col-md-2">
+                <input class="form-control" type="text" placeholder="Comprimento" value="">
+            </div>
+            <div class="col-md-2">
+                <input class="form-control" type="text" placeholder="Altura" value="">
+            </div>
+            <div class="col-md-2">
+                <input class="form-control" type="text" placeholder="Qtd Total" value="">
+            </div>
+            <div class="col-md-2">
+                <input class="form-control" type="text" placeholder="Qtd em Pane" value="">
+            </div>
+            <div class="col-md-2">
+                <input class="form-control" type="text" placeholder="Qtd Aplicada" value="">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4">
+                <input class="form-control" type="text" placeholder="Categoria" value="">
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" type="text" placeholder="Atualizado por:" value="">
+            </div>
+            <div class="col-md-4">
+                <input class="form-control" type="text" placeholder="Atualizado em:" value="">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-12">
+                <textarea class="form-control" rows="3" placeholder="Observações" value=""></textarea>
+            </div>
+            
+        </div>
+        <br>
+        <input type="submit" class="btn btn-primary" value="Editar">
+    </form>
+</div>
+
+{% endblock %}

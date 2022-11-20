@@ -23,3 +23,6 @@ def cadastrar_categoria(request):
         else:
             messages.error(request, 'Não foi possível cadastrar a categoria')
             return redirect ('/')
+
+def ver_equipamento(request, id):
+    return render (request, 'ver_equipamento.html')
