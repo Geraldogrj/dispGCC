@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, HttpResponse
 from .forms import FormCategoria
 from django.contrib import messages
-from .models import Categoria
+from .models import Categoria, Esquadrao
 
 def home (request):
     form_categoria = FormCategoria()
@@ -26,3 +26,11 @@ def cadastrar_categoria(request):
 
 def ver_equipamento(request, id):
     return render (request, 'ver_equipamento.html')
+
+def ver_esquadroes(request):
+    esquadroes = Esquadrao.objects.all();
+    
+    context = {
+        'esquadroes' : esquadroes,
+    }
+    return render (request, 'ver_esquadroes.html', context)

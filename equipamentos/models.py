@@ -24,3 +24,19 @@ class Equipamento (models.Model):
     
     def __str__(self):
         return self.nome
+    
+class Esquadrao (models.Model):
+    choices = (
+        ('mestre' , '1GCC'),
+        ('profeta','1/1GCC'),
+        ('aranha','2/1GCC'),
+        ('morcego','3/1GCC'),
+        ('mangrulho','4/1GCC'),
+        ('zagal','5/1GCC')
+    )
+    
+    nome = models.CharField(max_length=15, choices = choices, blank = False)
+    
+    def __str__(self):
+        return self.nome
+    
