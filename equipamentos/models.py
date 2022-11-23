@@ -21,6 +21,12 @@ class Equipamento (models.Model):
     observacoes = models.TextField()
     data_atualizacao = models.DateField()
     categoria = models.ForeignKey("Categoria", on_delete=models.DO_NOTHING)
+    esquadrao = models.ForeignKey("Esquadrao", on_delete=models.DO_NOTHING)
+    
+    def qtd_disponivel(self):
+        disp = self.qtd_total - (self.qtd_aplicada + self.qtd_pane)
+        return disp
+            
     
     def __str__(self):
         return self.nome
@@ -36,6 +42,8 @@ class Esquadrao (models.Model):
     )
     
     nome = models.CharField(max_length=15, choices = choices, blank = False)
+    logo = models.ImageField(upload_to='foto/%d/%m/%Y', blank=True)
+
     
     def __str__(self):
         return self.nome

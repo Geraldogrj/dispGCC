@@ -1,14 +1,20 @@
 from django.shortcuts import render, redirect, HttpResponse
 from .forms import FormCategoria
 from django.contrib import messages
-from .models import Categoria, Esquadrao
+from .models import Categoria, Esquadrao, Equipamento
 
-def home (request):
+def home (request, id):
+    esquadrao = Esquadrao.objects.get(id = id)
     form_categoria = FormCategoria()
     categorias = Categoria.objects.all()
+    
+    equipamentos = Equipamento.objects.filter(esquadrao = esquadrao)
+    
     context = {
         'form_categoria' : form_categoria,
-        'categorias' : categorias
+        'categorias' : categorias,
+        'esquadrao' : esquadrao,
+        'equipamentos' : equipamentos
     }
     return render (request, 'home.html', context)
 

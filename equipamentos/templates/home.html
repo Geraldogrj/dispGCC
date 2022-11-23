@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 
-{% block 'title' %}Home{% endblock %}
+{% block 'title' %}Ver Equipamentos{% endblock %}
 
 {% block 'content' %}
 
-<h3>Mobilidade</h3>
+
+
+<h3>Equipamentos</h3>
 <table class="table table-sm">
     <thead>
       <tr class="bg-warning">
@@ -19,48 +21,27 @@
         <th scope="col">Qtd aplicada</th>
         <th scope="col">Qtd disponível</th>
         <th scope="col">Observações</th>
+        <th scope="col">Data de Atualização</th>
       </tr>
     </thead>
+    {% for equipamento in equipamentos %}
     <tbody>
       <tr>
-        <th scope="row">Estação DLRS</th>
-        <td>75</td>
+        <th scope="row">{{equipamento.nome}}</th>
+        <td>{{equipamento.peso}}</td>
+        <td>{{equipamento.volume}}</td>
+        <td>{{equipamento.altura}}</td>
+        <td>{{equipamento.largura}}</td>
+        <td>{{equipamento.comprimento}}</td>
+        <td>{{equipamento.qtd_total}}</td>
+        <td>{{equipamento.qtd_pane}}</td>
+        <td>{{equipamento.qtd_aplicada}}</td>
         <td>1</td>
-        <td>0.53</td>
-        <td>0.27</td>
-        <td>0.97</td>
-        <td>2</td>
-        <td>1</td>
-        <td>1</td>
-        <td>0</td>
-        <td>Emprestado para o 2/1 GCC</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td colspan="2">Larry the Bird</td>
-        <td>@twitter</td>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-        <td>@mdo</td>
+        <td>{{equipamento.observacoes}}</td>
+        <td>{{equipamento.data_atualizacao}}</td>
       </tr>
     </tbody>
+    {% endfor %}
   </table>
 
 {% endblock %}
