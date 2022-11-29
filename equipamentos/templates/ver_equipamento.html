@@ -7,57 +7,70 @@
         {% csrf_token %}
         <div class="row">
             <div class="col-md-6">
-                <input class="form-control" type="text" placeholder="Nome" value="">
+                <label>Nome</label>
+                <input class="form-control" type="text" placeholder="Nome" value="{{equipamento.nome}}">
             </div>
             <div class="col-md-3">
-                <input class="form-control" type="text" placeholder="Peso" value="">
+                <label>Peso</label>
+                <input class="form-control" type="text" placeholder="Peso" value="{{equipamento.peso}}">
             </div>
             <div class="col-md-3">
-                <input class="form-control" type="text" placeholder="Volume" value="">
+                <label>Volume</label>
+                <input class="form-control" type="text" placeholder="Volume" value="{{equipamento.volume}}">
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-md-2">
-                <input class="form-control" type="text" placeholder="Largura" value="">
+                <label>Largura</label>
+                <input class="form-control" type="text" placeholder="Largura" value="{{equipamento.largura}}">
             </div>
             <div class="col-md-2">
-                <input class="form-control" type="text" placeholder="Comprimento" value="">
+                <label>Comprimento</label>
+                <input class="form-control" type="text" placeholder="Comprimento" value="{{equipamento.comprimento}}">
             </div>
             <div class="col-md-2">
-                <input class="form-control" type="text" placeholder="Altura" value="">
+                <label>Altura</label>
+                <input class="form-control" type="text" placeholder="Altura" value="{{equipamento.altura}}">
             </div>
             <div class="col-md-2">
-                <input class="form-control" type="text" placeholder="Qtd Total" value="">
+                <label>Quantidade Total</label>
+                <input class="form-control" type="text" placeholder="Qtd Total" value="{{equipamento.qtd_total}}">
             </div>
             <div class="col-md-2">
-                <input class="form-control" type="text" placeholder="Qtd em Pane" value="">
+                <label>Quantidade em Pane</label>
+                <input class="form-control" type="text" placeholder="Qtd em Pane" value="{{equipamento.qtd_pane}}">
             </div>
             <div class="col-md-2">
-                <input class="form-control" type="text" placeholder="Qtd Aplicada" value="">
+                <label>Quantidade Aplicada</label>
+                <input class="form-control" type="text" placeholder="Qtd Aplicada" value="{{equipamento.qtd_aplicada}}">
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-md-4">
-                <input class="form-control" type="text" placeholder="Categoria" value="">
+                <label>Categoria</label>
+                <input class="form-control" type="text" placeholder="Categoria" value="{{equipamento.categoria}}">
             </div>
             <div class="col-md-4">
+                <label>Atualizado por:</label>
                 <input class="form-control" type="text" placeholder="Atualizado por:" value="">
             </div>
             <div class="col-md-4">
+                <label>Data de Atualização</label>
                 <input class="form-control" type="text" placeholder="Atualizado em:" value="">
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-md-12">
-                <textarea class="form-control" rows="3" placeholder="Observações" value=""></textarea>
+                <label>Observações</label>
+                <textarea class="form-control" rows="3" placeholder="Observações" value="">{{equipamento.observacoes}}</textarea>
             </div>
             
         </div>
         <br>
-        <input type="submit" class="btn btn-primary" value="Editar">
+        <input type="submit" class="btn btn-primary" value="Salvar">
     </form>
 </div>
 

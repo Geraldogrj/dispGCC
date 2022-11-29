@@ -9,10 +9,11 @@ def home (request, id):
     categorias = Categoria.objects.all()
     
     equipamentos = Equipamento.objects.filter(esquadrao = esquadrao)
+    set_categorias = set(categorias)
     
     context = {
         'form_categoria' : form_categoria,
-        'categorias' : categorias,
+        'categorias' : set_categorias,
         'esquadrao' : esquadrao,
         'equipamentos' : equipamentos
     }
@@ -31,7 +32,11 @@ def cadastrar_categoria(request):
             return redirect ('/')
 
 def ver_equipamento(request, id):
-    return render (request, 'ver_equipamento.html')
+    equipamento = Equipamento.objects.get(id = id)
+    context = {
+        'equipamento' : equipamento
+    }
+    return render (request, 'ver_equipamento.html', context)
 
 def ver_esquadroes(request):
     esquadroes = Esquadrao.objects.all();
