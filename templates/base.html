@@ -18,7 +18,7 @@
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Cadastrar Categora</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle">Cadastrar Categoria</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -36,10 +36,34 @@
     </div>
   </div>
 </div>
+<!--MODAL Equipamentos-->
+<div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter2Title" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Cadastrar Equipamento</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action = "{% url 'cadastrar_equipamento' %}" method='POST'>
+          {% csrf_token %}
+          <table>
+            {{form_equipamento.as_table}}
+          </table>
+          <br>
+          <input type="submit" class="btn btn-primary" value="Cadastrar">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
 
   <!--INÍCIO DO NAVBAR-->
     <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #98FB98;">
-      <a class="navbar-brand" href="http://127.0.0.1:8000">DispGCC</a>
+      <a class="navbar-brand" href="http://127.0.0.1:8000">Início</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -54,7 +78,7 @@
               Cadastro
             </a>
             <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Equipamentos</a>
+              <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter2" href="{% url 'cadastrar_equipamento' %}">Equipamento</a>
               <a class="dropdown-item" data-toggle="modal" data-target="#exampleModalCenter" href="{% url 'cadastrar_categoria' %}">Categoria</a>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="#">Usuário</a>
