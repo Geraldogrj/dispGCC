@@ -20,6 +20,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'tempus_dominus',
+    'widget_tweaks',
     'django.contrib.admin',
     'equipamentos',
     'django.contrib.auth',
@@ -122,3 +124,5 @@ MESSAGE_TAGS = {
     messages.ERROR: 'danger',
     messages.SUCCESS: 'success',
 }
+
+TEMPUS_DOMINUS_LOCALIZE = True

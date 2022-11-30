@@ -1,4 +1,5 @@
 {% load static %}
+{% load widget_tweaks %}
 
 <!doctype html>
 <html lang="en">
@@ -9,7 +10,10 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-
+    <!--Tempus Dominus-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    {{form.media}}
     <title>{% block 'titulo' %} {% endblock %}</title>
   </head>
   <body>
@@ -26,10 +30,12 @@
       <div class="modal-body">
         <form action = "{% url 'cadastrar_categoria' %}" method='POST'>
           {% csrf_token %}
-          <table>
-            {{form_categoria.as_table}}
-          </table>
-          <br>
+          {% for field in form_categoria.visible_fields %}
+            <div class="form-group">
+                <label for = {{field.id_for_label}}>{{field.label}}</label>
+                {{field|add_class:'form-control'}}
+            </div>
+          {% endfor %}
           <input type="submit" class="btn btn-primary" value="Cadastrar">
         </form>
       </div>
@@ -49,11 +55,13 @@
       <div class="modal-body">
         <form action = "{% url 'cadastrar_equipamento' %}" method='POST'>
           {% csrf_token %}
-          <table>
-            {{form_equipamento.as_table}}
-          </table>
-          <br>
-          <input type="submit" class="btn btn-primary" value="Cadastrar">
+          {% for field in form_equipamento.visible_fields %}
+          <div class="form-group">
+              <label for = {{field.id_for_label}}>{{field.label}}</label>
+              {{field|add_class:'form-control'}}
+          </div>
+        {% endfor %}
+        <input type="submit" class="btn btn-primary" value="Cadastrar">
         </form>
       </div>
     </div>
