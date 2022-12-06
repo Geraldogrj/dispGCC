@@ -23,6 +23,7 @@ class Equipamento (models.Model):
     categoria = models.ForeignKey("Categoria", on_delete=models.DO_NOTHING)
     esquadrao = models.ForeignKey("Esquadrao", on_delete=models.DO_NOTHING)
     
+    
     def qtd_disponivel(self):
         disp = self.qtd_total - (self.qtd_aplicada + self.qtd_pane)
         return disp

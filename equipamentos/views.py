@@ -1,7 +1,13 @@
-from django.shortcuts import render, redirect, HttpResponse
+from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from .forms import FormCategoria, FormEquipamento
 from django.contrib import messages
 from .models import Categoria, Esquadrao, Equipamento
+from datetime import datetime
+
+def tratar_virgula(campo):
+    novo_campo = campo.replace(",", ".")
+    return novo_campo
+    
 
 def home (request, id):
     esquadrao = Esquadrao.objects.get(id = id)
@@ -37,10 +43,14 @@ def ver_equipamento(request, id):
     equipamento = Equipamento.objects.get(id = id)
     form_categoria = FormCategoria()
     form_equipamento = FormEquipamento()
+    categorias = Categoria.objects.all()
+    data_atualizacao = datetime.today()
     context = {
         'equipamento' : equipamento,
         'form_categoria': form_categoria,
         'form_equipamento' : form_equipamento,
+        'categorias': categorias,
+        'data_atualizacao' : data_atualizacao,
     }
     return render (request, 'ver_equipamento.html', context)
 
@@ -67,3 +77,38 @@ def cadastrar_equipamento(request):
         else:
             messages.error(request, 'O equipamento não pode ser cadastrado')
             return redirect ('/')
+        
+def atualizar_equipamento(request, id):
+    if request.method == 'POST':
+        
+        equipamento = get_object_or_404(Equipamento, id = id)
+        
+        form = FormEquipamento(request.POST or None, instance = equipamento)
+        
+        esquadrao = get_object_or_404(Esquadrao, id = equipamento.esquadrao.id)
+        categoria = Categoria.objects.get(nome = form.data['categoria'])
+        categoria = get_object_or_404(Categoria, id = categoria.id)
+    
+        #Tratar as vírgulas
+        peso = tratar_virgula(form.data['peso'])
+        volume = tratar_virgula(form.data['volume'])
+        largura = tratar_virgula(form.data['largura'])
+        altura = tratar_virgula(form.data['altura'])
+        comprimento = tratar_virgula(form.data['comprimento'])
+        
+        if form.is_valid():
+            messages.success(request, 'O equipamento foi atualizado com sucesso')
+            form.instance.peso = peso
+            form.instance.volume = volume
+            form.instance.esquadrao = esquadrao
+            form.instance.largura = largura
+            form.instance.altura = altura
+            form.instance.comprimento = comprimento
+            form.instance.categoria = categoria
+            form.instance.data_atualizacao = datetime.today()
+            form.save()
+            return redirect ('/')
+        else:
+            messages.error(request, 'Não foi possível atualizar o equipamento')
+            return redirect ('/')
+

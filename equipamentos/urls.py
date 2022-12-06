@@ -9,4 +9,5 @@ urlpatterns = [
     path('ver_equipamento/<int:id>', views.ver_equipamento, name = "ver_equipamento"),
     path('', views.ver_esquadroes, name = "ver_esquadroes"),
     path('cadastrar/equipamento', views.cadastrar_equipamento, name = 'cadastrar_equipamento'),
+    path('atualizar/equipamento/<int:id>', views.atualizar_equipamento, name = 'atualizar_equipamento'),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

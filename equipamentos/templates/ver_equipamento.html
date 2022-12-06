@@ -3,71 +3,86 @@
 {% block 'content' %}
 
 <div class="container">
-    <form action="#" method="POST">
+    <form action="{% url 'atualizar_equipamento' equipamento.id %}" method="POST">
         {% csrf_token %}
         <div class="row">
             <div class="col-md-6">
                 <label>Nome</label>
-                <input class="form-control" type="text" placeholder="Nome" value="{{equipamento.nome}}">
+                <input class="form-control" name = "nome" type="text" placeholder="Nome" value="{{equipamento.nome}}">
             </div>
             <div class="col-md-3">
                 <label>Peso</label>
-                <input class="form-control" type="text" placeholder="Peso" value="{{equipamento.peso}}">
+                <input class="form-control" name = "peso" type="text" placeholder="Peso" value="{{equipamento.peso}}">
             </div>
             <div class="col-md-3">
                 <label>Volume</label>
-                <input class="form-control" type="text" placeholder="Volume" value="{{equipamento.volume}}">
+                <input class="form-control" name = "volume" type="text" placeholder="Volume" value="{{equipamento.volume}}">
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-md-2">
                 <label>Largura</label>
-                <input class="form-control" type="text" placeholder="Largura" value="{{equipamento.largura}}">
+                <input class="form-control" name = "largura" type="text" placeholder="Largura" value="{{equipamento.largura|floatformat:2}}">
             </div>
             <div class="col-md-2">
                 <label>Comprimento</label>
-                <input class="form-control" type="text" placeholder="Comprimento" value="{{equipamento.comprimento}}">
+                <input class="form-control" name = "comprimento" type="text" placeholder="Comprimento" value="{{equipamento.comprimento|floatformat:2}}">
             </div>
             <div class="col-md-2">
                 <label>Altura</label>
-                <input class="form-control" type="text" placeholder="Altura" value="{{equipamento.altura}}">
+                <input class="form-control" name = "altura" type="text" placeholder="Altura" value="{{equipamento.altura|floatformat:2}}">
             </div>
             <div class="col-md-2">
                 <label>Quantidade Total</label>
-                <input class="form-control" type="text" placeholder="Qtd Total" value="{{equipamento.qtd_total}}">
+                <input class="form-control" name = "qtd_total" type="text" placeholder="Qtd Total" value="{{equipamento.qtd_total}}">
             </div>
             <div class="col-md-2">
                 <label>Quantidade em Pane</label>
-                <input class="form-control" type="text" placeholder="Qtd em Pane" value="{{equipamento.qtd_pane}}">
+                <input class="form-control" name = "qtd_pane" type="text" placeholder="Qtd em Pane" value="{{equipamento.qtd_pane}}">
             </div>
             <div class="col-md-2">
                 <label>Quantidade Aplicada</label>
-                <input class="form-control" type="text" placeholder="Qtd Aplicada" value="{{equipamento.qtd_aplicada}}">
+                <input class="form-control" name = "qtd_aplicada" type="text" placeholder="Qtd Aplicada" value="{{equipamento.qtd_aplicada}}">
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-md-4">
                 <label>Categoria</label>
-                <input class="form-control" type="text" placeholder="Categoria" value="{{equipamento.categoria}}">
+                <select class="form-control" name = "categoria" aria-label="Default select example">
+                    {% for categoria in categorias %}
+                        {% if equipamento.categoria == categoria %}
+                            <option selected>{{categoria}}</option>
+                        {% else %}
+                            <option>{{categoria}}</option>
+                        {% endif %}
+                    {% endfor %}
+                  </select>
             </div>
             <div class="col-md-4">
                 <label>Atualizado por:</label>
-                <input class="form-control" type="text" placeholder="Atualizado por:" value="">
+                <input class="form-control" name = "usuario" type="text" placeholder="Atualizado por:" value="">
             </div>
             <div class="col-md-4">
                 <label>Data de Atualização</label>
-                <input class="form-control" type="text" placeholder="Atualizado em:" value="">
+                <input class="form-control" name = "data_atualizacao" type="text" placeholder="Atualizado em:" value="{{equipamento.data_atualizacao}}">
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-md-12">
                 <label>Observações</label>
-                <textarea class="form-control" rows="3" placeholder="Observações" value="">{{equipamento.observacoes}}</textarea>
+                <textarea class="form-control" rows="3" name="observacoes" placeholder="Observações" value="">{{equipamento.observacoes}}</textarea>
+            </div>            
+        </div>
+        <fieldset disabled>
+        <div class="row">
+            <div class="col-md-12">
+                <label for="disabledTextInput" class="form-label">Esquadrão</label>
+                <input type="text" id="disabledTextInput" name="esquadrao" class="form-control" value="{{equipamento.esquadrao}}" placeholder="{{equipamento.esquadrao}}">
             </div>
-            
+        </fieldset>
         </div>
         <br>
         <input type="submit" class="btn btn-primary" value="Salvar">

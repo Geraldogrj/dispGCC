@@ -1,5 +1,8 @@
 from pathlib import Path
 import os
+import locale
+
+locale.setlocale(locale.LC_ALL, "pt_BR.utf-8")
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -97,7 +100,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = 'pt-br'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'America/Sao_Paulo'
 
 USE_I18N = True
 
@@ -126,3 +129,5 @@ MESSAGE_TAGS = {
 }
 
 TEMPUS_DOMINUS_LOCALIZE = True
+
+DECIMAL_SEPARATOR = '.'
