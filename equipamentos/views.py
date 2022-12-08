@@ -79,11 +79,15 @@ def cadastrar_equipamento(request):
             return redirect ('/')
         
 def atualizar_equipamento(request, id):
-    if request.method == 'POST':
+    if request.method == "POST":
         
         equipamento = get_object_or_404(Equipamento, id = id)
         
-        form = FormEquipamento(request.POST or None, instance = equipamento)
+        form = FormEquipamento(request.POST or None, instance= equipamento)
+        
+        print("*******************************")
+        print(form.errors)
+        print("*******************************")
         
         esquadrao = get_object_or_404(Esquadrao, id = equipamento.esquadrao.id)
         categoria = Categoria.objects.get(nome = form.data['categoria'])
