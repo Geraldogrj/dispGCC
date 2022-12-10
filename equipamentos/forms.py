@@ -17,3 +17,4 @@ class FormEquipamento(forms.ModelForm):
         model = Equipamento
         fields ='__all__'
         labels = {'qtd_pane' : 'Qtd em Pane', 'observacoes' : 'Observações', 'data_atualizacao' : 'Data de Atualização'}
+        exclude = {'esquadrao'}

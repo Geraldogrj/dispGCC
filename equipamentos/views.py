@@ -89,19 +89,21 @@ def atualizar_equipamento(request, id):
         print(form.errors)
         print("*******************************")
         
-        esquadrao = get_object_or_404(Esquadrao, id = equipamento.esquadrao.id)
-        categoria = Categoria.objects.get(nome = form.data['categoria'])
-        categoria = get_object_or_404(Categoria, id = categoria.id)
+        esquadrao = get_object_or_404(Esquadrao, pk = equipamento.esquadrao.pk)
+        #categoria = Categoria.objects.get(nome = form.data['categoria'])
+        categoria = get_object_or_404(Categoria, pk = int(form.data['categoria'])) 
+        
     
         #Tratar as vírgulas
-        peso = tratar_virgula(form.data['peso'])
-        volume = tratar_virgula(form.data['volume'])
-        largura = tratar_virgula(form.data['largura'])
-        altura = tratar_virgula(form.data['altura'])
-        comprimento = tratar_virgula(form.data['comprimento'])
+        peso = float(tratar_virgula(form.data['peso']))
+        volume = float(tratar_virgula(form.data['volume']))
+        largura = float(tratar_virgula(form.data['largura']))
+        altura = float(tratar_virgula(form.data['altura']))
+        comprimento = float(tratar_virgula(form.data['comprimento']))
         
         if form.is_valid():
             messages.success(request, 'O equipamento foi atualizado com sucesso')
+            form.instance.esquadrao = esquadrao
             form.instance.peso = peso
             form.instance.volume = volume
             form.instance.esquadrao = esquadrao

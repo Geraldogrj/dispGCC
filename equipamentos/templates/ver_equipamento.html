@@ -12,38 +12,43 @@
             </div>
             <div class="col-md-3">
                 <label>Peso</label>
-                <input class="form-control" name = "peso" type="text" value="{{equipamento.peso}}">
+                <input class="form-control nodot" name = "peso" type="number" step="any" value="{{equipamento.peso|safe}}">
+                <!--<input class="form-control" name = "peso" type="text" value="{{equipamento.peso}}">-->
             </div>
             <div class="col-md-3">
                 <label>Volume</label>
-                <input class="form-control" name = "volume" type="text" value="{{equipamento.volume}}">
+                <input class="form-control" name = "volume" type="number" step="any" value="{{equipamento.volume|safe}}">
+                <!--<input class="form-control" name = "volume" type="text" value="{{equipamento.volume}}">-->
             </div>
         </div>
         <br>
         <div class="row">
             <div class="col-md-2">
                 <label>Largura</label>
-                <input class="form-control" name = "largura" type="text" value="{{equipamento.largura|floatformat:2}}">
+                <input class="form-control" name = "largura" type="number" step="any" value="{{equipamento.largura|safe}}">
+                <!--<input class="form-control" name = "largura" type="text" value="{{equipamento.largura|floatformat:2}}">-->
             </div>
             <div class="col-md-2">
                 <label>Comprimento</label>
-                <input class="form-control" name = "comprimento" type="text" value="{{equipamento.comprimento|floatformat:2}}">
+                <input class="form-control" name = "comprimento" type="number" step="any" value="{{equipamento.comprimento|safe}}">
+                <!--<input class="form-control" name = "comprimento" type="text" value="{{equipamento.comprimento|floatformat:2}}">-->
             </div>
             <div class="col-md-2">
                 <label>Altura</label>
-                <input class="form-control" name = "altura" type="text" value="{{equipamento.altura|floatformat:2}}">
+                <input class="form-control" name = "altura" type="number" step="any" value="{{equipamento.altura|safe}}">
+                <!--<input class="form-control" name = "altura" type="text" value="{{equipamento.altura|floatformat:2}}">-->
             </div>
             <div class="col-md-2">
                 <label>Quantidade Total</label>
-                <input class="form-control" name = "qtd_total" type="text" value="{{equipamento.qtd_total}}">
+                <input class="form-control" name = "qtd_total" type="number" value="{{equipamento.qtd_total}}">
             </div>
             <div class="col-md-2">
                 <label>Quantidade em Pane</label>
-                <input class="form-control" name = "qtd_pane" type="text" value="{{equipamento.qtd_pane}}">
+                <input class="form-control" name = "qtd_pane" type="number" value="{{equipamento.qtd_pane}}">
             </div>
             <div class="col-md-2">
                 <label>Quantidade Aplicada</label>
-                <input class="form-control" name = "qtd_aplicada" type="text" value="{{equipamento.qtd_aplicada}}">
+                <input class="form-control" name = "qtd_aplicada" type="number" value="{{equipamento.qtd_aplicada}}">
             </div>
         </div>
         <br>
@@ -53,9 +58,9 @@
                 <select class="form-control" name = "categoria" aria-label="Default select example">
                     {% for categoria in categorias %}
                         {% if equipamento.categoria == categoria %}
-                            <option selected>{{categoria}}</option>
+                            <option value="{{categoria.id}}" selected>{{categoria}}</option>
                         {% else %}
-                            <option>{{categoria}}</option>
+                            <option value="{{categoria.id}}">{{categoria}}</option>
                         {% endif %}
                     {% endfor %}
                 </select>
@@ -65,8 +70,9 @@
                 <input class="form-control" name = "usuario" type="text" value="">
             </div>
             <div class="col-md-4">
-                <label>Data de Atualização</label>
-                <input class="form-control" name = "data_atualizacao" type="text" value="{{equipamento.data_atualizacao}}">
+                <label>Data de Atualização:</label>
+                <p>{{equipamento.data_atualizacao}}</p>
+                <!--<input disable class="form-control" name = "data_atualizacao" type="text" value="{{equipamento.data_atualizacao}}">-->
             </div>
         </div>
         <br>
@@ -76,13 +82,6 @@
                 <textarea class="form-control" rows="3" name="observacoes" value="">{{equipamento.observacoes}}</textarea>
             </div>            
         </div>
-        <fieldset disabled>
-        <div class="row">
-            <div class="col-md-12">
-                <label for="disabledTextInput" class="form-label">Esquadrão</label>
-                <input type="text" id="disabledTextInput" name="esquadrao" class="form-control" value="{{equipamento.esquadrao.nome}}" placeholder="{{equipamento.esquadrao}}">
-            </div>
-        </fieldset>
         </div>
         <br>
         <input type="submit" class="btn btn-primary" value="Salvar">
